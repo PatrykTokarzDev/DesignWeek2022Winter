@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -50,6 +51,15 @@ public class InventorySystem : MonoBehaviour
                 inventory.Remove(value);
                 itemDictionary.Remove(referenceData);
             }
+        }
+    }
+
+    public event Action onInventoryChangedEvent; // TBA!!
+    public void InventoryChangedEvent()
+    {
+        if(onInventoryChangedEvent!= null)
+        {
+            onInventoryChangedEvent();
         }
     }
 }
